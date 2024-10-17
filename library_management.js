@@ -82,3 +82,23 @@ class Section {
     }
 }
 
+//Task 6: Create and Manage Sections and Patrons
+// create sections
+const romance = new Section('Romance');
+const biography = new Section('Biography');
+// books
+const book1 = new Book('It Ends with Us', 'Coleen Hoover', '1501110365');
+const book2 = new Book('Friends, Lovers, and the Big Terrible Thing: A Memoir', 'Matthew Perry', '978-1250866448');
+// add book to sec
+romance.addBook(book1);
+biography.addBook(book2);
+// patrons
+const normalPatron = new Patron('Laura');
+const VIPPatron = new VIIPatron('Nutella', true);
+
+normalPatron.borrowedBook(book1); // normal borrowed book
+VIPPatron.borrowedBook(book1); // vip borrowed book
+normalPatron.returnBook(book1); // normal returned book
+biography.listBooks(); // list available books
+console.log(`Available romance books:${romance.calculateTotalBooksAvailable()}`); // total romance books available
+console.log(`Available biograhy books:${biography.calculateTotalBooksAvailable()}`); // total biography  books available
