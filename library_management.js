@@ -74,3 +74,11 @@ class VIIPatron extends Patron {
         super.borrowedBook(book); // call borrowedBook to add book to borrowed list with new deatils
     }
 }
+
+// Task 5: Handle Books Borrowing and Returning
+class Section {
+    calculateTotalBooksAvailable() { // calculate total books available in specified section
+        return this.getAvailableBooks(); // call getAvailableBooks to get # of books available
+    }
+}
+
