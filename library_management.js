@@ -17,4 +17,22 @@ class Book {
     } // allows to if the book status changes
 }
 
-//
+//Create a Section Class
+class Section { // store books in array
+    constructor(name) {
+        this.name = name;
+        this.books = [];
+    }
+    addBook(book) {
+        this.books.push(book);
+    } // add new book to section
+    listBooks() {
+        this.books.forEach(books => {
+            const availability = book.isAvailable ? "Available" : "Not Available";
+            console.log(`${book.getDetails()} - ${availability}`);
+        }); // list book details and show availability
+    }
+    getAvailableBooks() {
+        return this.books.filter(book => book.isAvailable).length;
+    } // use filter to get available books
+}
