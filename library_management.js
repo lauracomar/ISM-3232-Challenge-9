@@ -13,7 +13,7 @@ class Book {
         return this._isAvailable;
     } // return current status
     set isAvailable(status) {
-        this.isAvailable = status;
+        this._isAvailable = status;
     } // allows to if the book status changes
 }
 
@@ -27,7 +27,7 @@ class Section { // store books in array
         this.books.push(book);
     } // add new book to section
     listBooks() {
-        this.books.forEach(books => {
+        this.books.forEach(book => {
             const availability = book.isAvailable ? "Available" : "Not Available";
             console.log(`${book.getDetails()} - ${availability}`);
         }); // list book details and show availability
@@ -35,6 +35,10 @@ class Section { // store books in array
     getAvailableBooks() {
         return this.books.filter(book => book.isAvailable).length;
     } // use filter to get available books
+    // Task 5: Handle Books Borrowing and Returning
+    calculateTotalBooksAvailable() { // calculate total books available in specified section
+        return this.getAvailableBooks(); // call getAvailableBooks to get # of books available
+    }
 }
 
 // Task 3: Create a Patron Class
@@ -61,7 +65,7 @@ class Patron {
 }
 
 // Task 4: Create a VIPPatron Class that Inherits from Patron
-class VIIPatron extends Patron {
+class VIPPatron extends Patron {
     constructor(name, priority) {
         super(name); // call parent class constructor 
         this.priority = priority; // new parameter
@@ -75,12 +79,6 @@ class VIIPatron extends Patron {
     }
 }
 
-// Task 5: Handle Books Borrowing and Returning
-class Section {
-    calculateTotalBooksAvailable() { // calculate total books available in specified section
-        return this.getAvailableBooks(); // call getAvailableBooks to get # of books available
-    }
-}
 
 //Task 6: Create and Manage Sections and Patrons
 // create sections
@@ -94,10 +92,10 @@ romance.addBook(book1);
 biography.addBook(book2);
 // patrons
 const normalPatron = new Patron('Laura');
-const VIPPatron = new VIIPatron('Nutella', true);
+const VipPatron = new VIPPatron('Nutella', true);
 
 normalPatron.borrowedBook(book1); // normal borrowed book
-VIPPatron.borrowedBook(book1); // vip borrowed book
+VipPatron.borrowedBook(book1); // vip borrowed book
 normalPatron.returnBook(book1); // normal returned book
 biography.listBooks(); // list available books
 console.log(`Available romance books:${romance.calculateTotalBooksAvailable()}`); // total romance books available
